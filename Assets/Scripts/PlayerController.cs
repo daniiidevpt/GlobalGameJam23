@@ -7,13 +7,12 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float moveForce;
     private Vector2 moveDirection;
-    private Vector2 mousePositionDown;
-    private Vector2 mousePositionUp;
 
     [Header("DirectionHelper Settings")]
     [SerializeField] private GameObject arrowPointer;
     [SerializeField] private float rotationMultiplier;
     [SerializeField] private GameObject forceIndicator;
+    [SerializeField] private GameObject forceVFX;
 
     Rigidbody2D rb;
 
@@ -32,22 +31,16 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            mousePositionDown = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Debug.Log("Click Pressed: " + mousePositionDown.x + " | " + mousePositionDown.y);
-            
             arrowPointer.SetActive(true);
             forceIndicator.SetActive(true);
         }
 
         if (Input.GetButtonUp("Fire1"))
         {
-            mousePositionUp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Debug.Log("Click Released: " + mousePositionUp.x + " | " + mousePositionUp.y);
-
             arrowPointer.SetActive(false);
             forceIndicator.SetActive(false);
 
-            moveDirection = mousePositionDown - mousePositionUp;
+            moveDirection = arrowPointer.transform.up;
             HandleMovement(moveDirection);
         }
     }
@@ -56,9 +49,14 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButton("Fire1"))
         {
+            //ARROW POINTER
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            arrowPointer.transform.rotation = Quaternion.Euler(0f, 0f, mousePosition.x * rotationMultiplier);
-            //NEED TO CLAMP ROTATION
+            float rotationAngle = Mathf.Clamp(mousePosition.x * rotationMultiplier, -90f, 90f);
+
+            arrowPointer.transform.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
+
+            //FORCE INDICATOR
+           
         }
     }
 

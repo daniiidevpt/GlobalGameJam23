@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 53313650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.9, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.09, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2108963252}
@@ -195,7 +195,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 1, b: 0.07855153, a: 1}
   m_FlipX: 0
@@ -671,7 +671,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -712,10 +712,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4879e3a4afb8117499310f150bd9e03b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 500
+  moveForce: 1000
   arrowPointer: {fileID: 1226676190}
-  rotationMultiplier: 45
+  rotationMultiplier: 30
   forceIndicator: {fileID: 2108963251}
+  forceVFX: {fileID: 53313650}
 --- !u!50 &1881845948
 Rigidbody2D:
   serializedVersion: 4
@@ -889,7 +890,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2108963252
 Transform:
   m_ObjectHideFlags: 0
