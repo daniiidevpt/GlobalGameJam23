@@ -73,12 +73,17 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Definig Force");
 
             //ARROW POINTER
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            float rotationAngle = Mathf.Clamp(mousePosition.x * rotationMultiplier, rotationMin, rotationMax);
-            arrowPointer.transform.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 rotation = mousePosition - arrowPointer.transform.position;
+
+            arrowPointer.transform.rotation = Quaternion.LookRotation(arrowPointer.transform.forward, rotation);
+
+            Vector3 euler = arrowPointer.transform.eulerAngles;
+            if (euler.z > 180) euler.z = euler.z - 360;
+            euler.z = Mathf.Clamp(euler.z, rotationMin, rotationMax);
+            arrowPointer.transform.eulerAngles = euler;
 
             //FORCE INDICATOR
-
             forceVFX.fillAmount = Mathf.PingPong(Time.time * forceIndicatorMultiplier, 1f);
 
             if (forceVFX.fillAmount < 0.2f)
