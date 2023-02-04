@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float glidingForce;
     [SerializeField] private bool isInAir;
     private Vector2 moveDirection;
-    private Vector2 glidingDirection;
 
     [Header("Grounded Settings")]
     [SerializeField] private Transform checkPosition;
@@ -77,11 +76,6 @@ public class PlayerController : MonoBehaviour
             float rotationAngle = Mathf.Clamp(mousePosition.x * rotationMultiplier, rotationMin, rotationMax);
             arrowPointer.transform.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
 
-            if (rotationAngle > 0f)
-                glidingDirection = -transform.right;
-            else
-                glidingDirection = transform.right;
-
             //FORCE INDICATOR
             forceVFX.transform.localScale = new Vector3(Mathf.PingPong(Time.time * forceIndicatorMultiplier, 1.5f), 0.1f, 1f);
             float forceIndicator = forceVFX.transform.localScale.x;
@@ -99,9 +93,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButton("Fire2") && isInAir)
         {
+            Debug.Log("Gliding");
+            
             rb.gravityScale = 0f;
             rb.velocity = new Vector2(rb.velocity.x, -glidingForce);
-            Debug.Log("Gliding");
         }
         else if(isInAir)
         {
