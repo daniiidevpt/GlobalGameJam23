@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,12 +25,10 @@ public class PlayerController : MonoBehaviour
 
     [Header("Force Indicator")]
     [SerializeField] private GameObject forceIndicator;
-    [SerializeField] private GameObject forceVFX;
+    [SerializeField] private Image forceVFX;
     [SerializeField] private float forceIndicatorMultiplier;
 
     Rigidbody2D rb;
-
-    public float MoveForce { get => moveForce; set => moveForce = value; }
 
     private void Start()
     {
@@ -79,15 +78,17 @@ public class PlayerController : MonoBehaviour
             arrowPointer.transform.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
 
             //FORCE INDICATOR
-            forceVFX.transform.localScale = new Vector3(Mathf.PingPong(Time.time * forceIndicatorMultiplier, 1.5f), 0.1f, 1f);
-            float forceIndicator = forceVFX.transform.localScale.x;
 
-            if (forceIndicator < 0.5f)
-                MoveForce = 1500;
-            else if (forceIndicator < 1f)
-                MoveForce = 3000;
-            else if (forceIndicator < 1.5f)
-                MoveForce = 5000;
+            forceVFX.fillAmount = Mathf.PingPong(Time.time * forceIndicatorMultiplier, 1f);
+
+            if (forceVFX.fillAmount < 0.2f)
+                moveForce = 1500;
+            else if (forceVFX.fillAmount < 0.5f)
+                moveForce = 2500;
+            else if (forceVFX.fillAmount < 0.8f)
+                moveForce = 3500;
+            else if (forceVFX.fillAmount < 1f)
+                moveForce = 5000;
         }
     }
 
@@ -108,7 +109,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement(Vector2 direction)
     {
-        rb.AddForce(direction * MoveForce * Time.deltaTime, ForceMode2D.Impulse);
+        rb.AddForce(direction * moveForce * Time.deltaTime, ForceMode2D.Impulse);
     }
 
     private bool IsGrounded()

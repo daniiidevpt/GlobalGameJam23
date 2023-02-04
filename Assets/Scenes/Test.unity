@@ -359,6 +359,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5653988070892922273, guid: 8b027c8c0d3dff64fb4d67364ef32d68, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5653988071816381125, guid: 8b027c8c0d3dff64fb4d67364ef32d68, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -406,6 +410,14 @@ PrefabInstance:
     - target: {fileID: 5653988071816381127, guid: 8b027c8c0d3dff64fb4d67364ef32d68, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323209277016653903, guid: 8b027c8c0d3dff64fb4d67364ef32d68, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323209277016653903, guid: 8b027c8c0d3dff64fb4d67364ef32d68, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b027c8c0d3dff64fb4d67364ef32d68, type: 3}
