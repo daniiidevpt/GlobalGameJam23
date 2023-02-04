@@ -684,7 +684,7 @@ MonoBehaviour:
     pitch: 1
     destroyTime: 5
     fadeInTime: 0
-    fadeOutTime: 0
+    fadeOutTime: 0.3
     cooldownTime: 0
     isLoop: 0
     spatialBlend: 0
@@ -721,7 +721,7 @@ MonoBehaviour:
     minDistance: 0
     maxDistance: 0
     source: {fileID: 0}
-  - name: PlayerHitFloor
+  - name: PlayerHitGround
     clips:
     - {fileID: 8300000, guid: 090bfed9dfa92d645bb6f7a3f7ebfb7a, type: 3}
     - {fileID: 8300000, guid: b3ac4c647c9826647b395abf8726ca24, type: 3}
@@ -740,7 +740,7 @@ MonoBehaviour:
     destroyTime: 5
     fadeInTime: 0
     fadeOutTime: 0
-    cooldownTime: 0
+    cooldownTime: 1
     isLoop: 0
     spatialBlend: 0
     dopplerLevel: 0
@@ -749,7 +749,25 @@ MonoBehaviour:
     minDistance: 0
     maxDistance: 0
     source: {fileID: 0}
-  sceneMusic: 
+  - name: LevelMusic
+    clips:
+    - {fileID: 8300000, guid: 238eca219d5f09f4f8abd94e5cc1e257, type: 3}
+    outputMixer: 0
+    volume: 0.5
+    pitch: 1
+    destroyTime: 0
+    fadeInTime: 0
+    fadeOutTime: 0
+    cooldownTime: 0
+    isLoop: 1
+    spatialBlend: 0
+    dopplerLevel: 0
+    spread: 0
+    audioRolloffMode: 0
+    minDistance: 0
+    maxDistance: 0
+    source: {fileID: 0}
+  sceneMusic: LevelMusic
 --- !u!1 &836328033
 GameObject:
   m_ObjectHideFlags: 0
