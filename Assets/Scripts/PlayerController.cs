@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    AudioManager am;
+
     [Header("Movement Settings")]
     [SerializeField] private float moveForce;
     [SerializeField] private float glidingForce;
@@ -16,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform checkPosition;
     [SerializeField] private float checkRadius;
     [SerializeField] private LayerMask groundLayer;
+    private bool alreadyHitGround;
 
     [Header("DirectionHelper Settings")]
     [SerializeField] private GameObject arrowPointer;
@@ -32,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+       am = AudioManager.instance;
        rb = GetComponent<Rigidbody2D>(); 
     }
 
@@ -42,6 +46,11 @@ public class PlayerController : MonoBehaviour
         HandleGlide();
 
         isInAir = IsGrounded() ? false : true;
+
+        if (isInAir)
+        {
+            alreadyHitGround = false;
+        }
     }
 
     private void HandleClick()
@@ -52,6 +61,7 @@ public class PlayerController : MonoBehaviour
 
             arrowPointer.SetActive(true);
             forceIndicator.SetActive(true);
+            am.Play("PlayerHoldToThrow", gameObject);
         }
 
         if (Input.GetButtonUp("Fire1") && !isInAir)
@@ -60,6 +70,7 @@ public class PlayerController : MonoBehaviour
 
             arrowPointer.SetActive(false);
             forceIndicator.SetActive(false);
+            am.Play("PlayerThrown", gameObject);
 
             moveDirection = arrowPointer.transform.up;
             HandleMovement(moveDirection);
@@ -70,7 +81,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButton("Fire1") && !isInAir)
         {
-            Debug.Log("Definig Force");
+            Debug.Log("Defining Force");
 
             //ARROW POINTER
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -99,10 +110,14 @@ public class PlayerController : MonoBehaviour
 
     private void HandleGlide()
     {
+        if(Input.GetButtonDown("Fire2") && isInAir)
+        {
+            am.Play("PlayerGliding");
+        }
+
         if (Input.GetButton("Fire2") && isInAir)
         {
             Debug.Log("Gliding");
-            
             rb.gravityScale = 0f;
             rb.velocity = new Vector2(rb.velocity.x, -glidingForce);
         }
@@ -126,5 +141,15 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(checkPosition.position, checkRadius);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == 3 && !alreadyHitGround)
+        {
+            am.FadeOutSound("PlayerGliding");
+            am.Play("PlayerHitGround");
+            alreadyHitGround = true;
+        }
     }
 }

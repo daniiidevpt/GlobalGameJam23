@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2fa035b0ed3c7148a1509791238291a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: d80f57d621b76a944a05d84d98501eb4, type: 2}
+  mixer: {fileID: 24100000, guid: 475901e6b27e1ab4bbcf006385ca3468, type: 2}
   sounds:
   - name: PlayerHoldToThrow
     clips:
@@ -628,8 +628,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 601ab4512ba63e04ebfd1a4e2abb7267, type: 3}
     outputMixer: 1
     volume: 1
-    pitch: 0
-    destroyTime: 1
+    pitch: 1
+    destroyTime: 3
     fadeInTime: 0
     fadeOutTime: 0
     cooldownTime: 0
@@ -657,8 +657,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: b94b3c2cc8b0b7946aa46566c76ce26e, type: 3}
     outputMixer: 1
     volume: 1
-    pitch: 0
-    destroyTime: 1
+    pitch: 1
+    destroyTime: 3
     fadeInTime: 0
     fadeOutTime: 0
     cooldownTime: 0
@@ -681,10 +681,10 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 0b1330861d3c3454883fd5b093a07f17, type: 3}
     outputMixer: 1
     volume: 1
-    pitch: 0
-    destroyTime: 1
+    pitch: 1
+    destroyTime: 5
     fadeInTime: 0
-    fadeOutTime: 0
+    fadeOutTime: 0.3
     cooldownTime: 0
     isLoop: 0
     spatialBlend: 0
@@ -708,8 +708,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 1a5cb90dae281c8468e34f9b09d41b2a, type: 3}
     outputMixer: 1
     volume: 1
-    pitch: 0
-    destroyTime: 1
+    pitch: 1
+    destroyTime: 5
     fadeInTime: 0
     fadeOutTime: 0
     cooldownTime: 0
@@ -721,7 +721,7 @@ MonoBehaviour:
     minDistance: 0
     maxDistance: 0
     source: {fileID: 0}
-  - name: PlayerHitFloor
+  - name: PlayerHitGround
     clips:
     - {fileID: 8300000, guid: 090bfed9dfa92d645bb6f7a3f7ebfb7a, type: 3}
     - {fileID: 8300000, guid: b3ac4c647c9826647b395abf8726ca24, type: 3}
@@ -736,11 +736,11 @@ MonoBehaviour:
     - {fileID: 8300000, guid: c01b3d07653ced140a27ac85cdc80ba0, type: 3}
     outputMixer: 1
     volume: 1
-    pitch: 0
-    destroyTime: 1
+    pitch: 1
+    destroyTime: 5
     fadeInTime: 0
     fadeOutTime: 0
-    cooldownTime: 0
+    cooldownTime: 1
     isLoop: 0
     spatialBlend: 0
     dopplerLevel: 0
@@ -749,7 +749,25 @@ MonoBehaviour:
     minDistance: 0
     maxDistance: 0
     source: {fileID: 0}
-  sceneMusic: 
+  - name: LevelMusic
+    clips:
+    - {fileID: 8300000, guid: 238eca219d5f09f4f8abd94e5cc1e257, type: 3}
+    outputMixer: 0
+    volume: 0.5
+    pitch: 1
+    destroyTime: 0
+    fadeInTime: 0
+    fadeOutTime: 0
+    cooldownTime: 0
+    isLoop: 1
+    spatialBlend: 0
+    dopplerLevel: 0
+    spread: 0
+    audioRolloffMode: 0
+    minDistance: 0
+    maxDistance: 0
+    source: {fileID: 0}
+  sceneMusic: LevelMusic
 --- !u!1 &836328033
 GameObject:
   m_ObjectHideFlags: 0
