@@ -42,11 +42,28 @@ public class GameManager : MonoBehaviour
         currentTime -= Time.deltaTime;
         ui.DepleteWaterBar(currentTime, maxTime);
 
-        if(currentTime < 0)
+        if(currentTime <= 0)
         {
             currentTime = 0;
             Time.timeScale = 0;
             ui.GameOver();
         }
+
+        if (currentTime >=  maxTime)
+        {
+            currentTime = maxTime;
+        }
+    }
+
+    public void AddTime(float amountTime)
+    {
+        currentTime += amountTime;
+    }
+
+    public void GameWon()
+    {
+        print("GAME WON");
+        Time.timeScale = 0;
+        //ui.VictoryScreen();
     }
 }
