@@ -206,7 +206,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &212207703
 MonoBehaviour:
@@ -241,6 +241,207 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1 &574951710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 574951714}
+  - component: {fileID: 574951711}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &574951711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574951710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fa035b0ed3c7148a1509791238291a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 475901e6b27e1ab4bbcf006385ca3468, type: 2}
+  sounds:
+  - name: PlayerHoldToThrow
+    clips:
+    - {fileID: 8300000, guid: 59e78077917a2124589745469646b8d8, type: 3}
+    - {fileID: 8300000, guid: ef2e20fec6b9c694ea09458b779267ef, type: 3}
+    - {fileID: 8300000, guid: 8d5aa7f2309b7464fae1d71a10a63e41, type: 3}
+    - {fileID: 8300000, guid: b770e5dc31057a641ad0fbc665943a6f, type: 3}
+    - {fileID: 8300000, guid: d06a0cbffe6f79d4e933d5959c8dca40, type: 3}
+    - {fileID: 8300000, guid: 2bbec844cd5d2ea4e87dc3219c4582da, type: 3}
+    - {fileID: 8300000, guid: 312042dc603c0934b8953c7cab08f59f, type: 3}
+    - {fileID: 8300000, guid: 9a848ad8619799944aec15af89a7e524, type: 3}
+    - {fileID: 8300000, guid: da3f5e2907a0ffb49ac7e8c6b1e18978, type: 3}
+    - {fileID: 8300000, guid: 9abf9075cacac7046b9e64ed86340a4f, type: 3}
+    - {fileID: 8300000, guid: 601ab4512ba63e04ebfd1a4e2abb7267, type: 3}
+    outputMixer: 1
+    volume: 1
+    pitch: 1
+    destroyTime: 3
+    fadeInTime: 0
+    fadeOutTime: 0
+    cooldownTime: 0
+    isLoop: 0
+    spatialBlend: 0
+    dopplerLevel: 0
+    spread: 0
+    audioRolloffMode: 0
+    minDistance: 0
+    maxDistance: 0
+    source: {fileID: 0}
+  - name: PlayerThrown
+    clips:
+    - {fileID: 8300000, guid: cf67f54b12e5ecf448ae21b3e0b7ea4b, type: 3}
+    - {fileID: 8300000, guid: db167e33cb92dbe4390640026abd80ab, type: 3}
+    - {fileID: 8300000, guid: 4fe2884031a84c4469b903d073b745dc, type: 3}
+    - {fileID: 8300000, guid: 16125bbd78f4cc844a5d662fe5caf9ab, type: 3}
+    - {fileID: 8300000, guid: f2ef8fa7a16d5244ab3a6bcb2b1d2a8c, type: 3}
+    - {fileID: 8300000, guid: 6987fd38b397cb943b9fddf3b9174ad6, type: 3}
+    - {fileID: 8300000, guid: 0619b3af21018f14bb9daeec255b74bc, type: 3}
+    - {fileID: 8300000, guid: 1d5a9d0e456ccf84ba5799339e3bae96, type: 3}
+    - {fileID: 8300000, guid: 92910d7806b3f1f40bd06c93731115e1, type: 3}
+    - {fileID: 8300000, guid: 1c5cc9c066b948c49ba1aa97c14eca91, type: 3}
+    - {fileID: 8300000, guid: df10f51f9e9b1434693ad95436d5b87b, type: 3}
+    - {fileID: 8300000, guid: b94b3c2cc8b0b7946aa46566c76ce26e, type: 3}
+    outputMixer: 1
+    volume: 1
+    pitch: 1
+    destroyTime: 3
+    fadeInTime: 0
+    fadeOutTime: 0
+    cooldownTime: 0
+    isLoop: 0
+    spatialBlend: 0
+    dopplerLevel: 0
+    spread: 0
+    audioRolloffMode: 0
+    minDistance: 0
+    maxDistance: 0
+    source: {fileID: 0}
+  - name: PlayerGliding
+    clips:
+    - {fileID: 8300000, guid: 34e626989b3322147b210e9d5f9a8994, type: 3}
+    - {fileID: 8300000, guid: 7251b994add0d244f8d055d1c087928f, type: 3}
+    - {fileID: 8300000, guid: 012f61a31a0101a4e9eddae2b9b2e77c, type: 3}
+    - {fileID: 8300000, guid: 41cdc242517ac8d4b8293dd4e721d4f3, type: 3}
+    - {fileID: 8300000, guid: 90fd97a8eb824b845b3329b82e45c9f3, type: 3}
+    - {fileID: 8300000, guid: 65a67d93f0048ef40bfc6a74486a7caa, type: 3}
+    - {fileID: 8300000, guid: 0b1330861d3c3454883fd5b093a07f17, type: 3}
+    outputMixer: 1
+    volume: 1
+    pitch: 1
+    destroyTime: 5
+    fadeInTime: 0
+    fadeOutTime: 0.3
+    cooldownTime: 0
+    isLoop: 0
+    spatialBlend: 0
+    dopplerLevel: 0
+    spread: 0
+    audioRolloffMode: 0
+    minDistance: 0
+    maxDistance: 0
+    source: {fileID: 0}
+  - name: PlayerHurt
+    clips:
+    - {fileID: 8300000, guid: 5aa027d5ea1a0f74cbaa28f20b3a7803, type: 3}
+    - {fileID: 8300000, guid: a7ecf03a73eb28b4d845746316502985, type: 3}
+    - {fileID: 8300000, guid: 87e81fc613e21804ca6ef356b327c870, type: 3}
+    - {fileID: 8300000, guid: 339ab70c7bf71484ca3f6abfd988d069, type: 3}
+    - {fileID: 8300000, guid: 80ebe322f2694d74484e63549046b972, type: 3}
+    - {fileID: 8300000, guid: e4107acefc555064386f0ead49c87fbc, type: 3}
+    - {fileID: 8300000, guid: 84e9c8e6dbab3724eb5d08a101f87021, type: 3}
+    - {fileID: 8300000, guid: fcf4609a948395a45a3480c5ed679b58, type: 3}
+    - {fileID: 8300000, guid: 7290f98221301fd4f813624433ea2ddd, type: 3}
+    - {fileID: 8300000, guid: 1a5cb90dae281c8468e34f9b09d41b2a, type: 3}
+    outputMixer: 1
+    volume: 1
+    pitch: 1
+    destroyTime: 5
+    fadeInTime: 0
+    fadeOutTime: 0
+    cooldownTime: 0
+    isLoop: 0
+    spatialBlend: 0
+    dopplerLevel: 0
+    spread: 0
+    audioRolloffMode: 0
+    minDistance: 0
+    maxDistance: 0
+    source: {fileID: 0}
+  - name: PlayerHitGround
+    clips:
+    - {fileID: 8300000, guid: 090bfed9dfa92d645bb6f7a3f7ebfb7a, type: 3}
+    - {fileID: 8300000, guid: b3ac4c647c9826647b395abf8726ca24, type: 3}
+    - {fileID: 8300000, guid: 4801868fdcf8e204a9ba7ff415aa70f4, type: 3}
+    - {fileID: 8300000, guid: 5118ad8a8affb4345976a731ba55fbd2, type: 3}
+    - {fileID: 8300000, guid: 15f487b3a8b6a7f49a7e415a952a9e96, type: 3}
+    - {fileID: 8300000, guid: cef1e038a3f00db45bb2080dd103b137, type: 3}
+    - {fileID: 8300000, guid: 6ddddc64f87993a4ba393e98361950f9, type: 3}
+    - {fileID: 8300000, guid: 3597426cd7b9bd642b9e10c2ec553bc5, type: 3}
+    - {fileID: 8300000, guid: e927a527dd7fdea45ad6a6f1d50ea5a1, type: 3}
+    - {fileID: 8300000, guid: b62c679cb7bc04045b50f0a89556aa67, type: 3}
+    - {fileID: 8300000, guid: c01b3d07653ced140a27ac85cdc80ba0, type: 3}
+    outputMixer: 1
+    volume: 1
+    pitch: 1
+    destroyTime: 5
+    fadeInTime: 0
+    fadeOutTime: 0
+    cooldownTime: 1
+    isLoop: 0
+    spatialBlend: 0
+    dopplerLevel: 0
+    spread: 0
+    audioRolloffMode: 0
+    minDistance: 0
+    maxDistance: 0
+    source: {fileID: 0}
+  - name: LevelMusic
+    clips:
+    - {fileID: 8300000, guid: 238eca219d5f09f4f8abd94e5cc1e257, type: 3}
+    outputMixer: 0
+    volume: 0.5
+    pitch: 1
+    destroyTime: 0
+    fadeInTime: 0
+    fadeOutTime: 0
+    cooldownTime: 0
+    isLoop: 1
+    spatialBlend: 0
+    dopplerLevel: 0
+    spread: 0
+    audioRolloffMode: 0
+    minDistance: 0
+    maxDistance: 0
+    source: {fileID: 0}
+  sceneMusic: LevelMusic
+--- !u!4 &574951714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574951710}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1902536509
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +525,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1902536512
 BoxCollider2D:
@@ -359,17 +560,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5653988071816381124, guid: 8b027c8c0d3dff64fb4d67364ef32d68, type: 3}
-      propertyPath: rotationMax
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 5653988071816381124, guid: 8b027c8c0d3dff64fb4d67364ef32d68, type: 3}
-      propertyPath: rotationMultiplier
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5653988071816381125, guid: 8b027c8c0d3dff64fb4d67364ef32d68, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5653988071816381125, guid: 8b027c8c0d3dff64fb4d67364ef32d68, type: 3}
       propertyPath: m_LocalPosition.x
