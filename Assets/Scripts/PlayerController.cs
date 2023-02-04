@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
 
+    public float MoveForce { get => moveForce; set => moveForce = value; }
+
     private void Start()
     {
        rb = GetComponent<Rigidbody2D>(); 
@@ -81,11 +83,11 @@ public class PlayerController : MonoBehaviour
             float forceIndicator = forceVFX.transform.localScale.x;
 
             if (forceIndicator < 0.5f)
-                moveForce = 1500;
+                MoveForce = 1500;
             else if (forceIndicator < 1f)
-                moveForce = 3000;
+                MoveForce = 3000;
             else if (forceIndicator < 1.5f)
-                moveForce = 5000;
+                MoveForce = 5000;
         }
     }
 
@@ -106,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement(Vector2 direction)
     {
-        rb.AddForce(direction * moveForce * Time.deltaTime, ForceMode2D.Impulse);
+        rb.AddForce(direction * MoveForce * Time.deltaTime, ForceMode2D.Impulse);
     }
 
     private bool IsGrounded()
