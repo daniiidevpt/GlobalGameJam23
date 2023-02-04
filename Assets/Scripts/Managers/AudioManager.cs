@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
     {
         if(!String.IsNullOrEmpty(sceneMusic))
         {
-            Play(sceneMusic);
+            PlayCooldown(sceneMusic);
         }
     }
 

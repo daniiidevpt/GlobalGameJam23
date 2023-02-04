@@ -5,6 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    AudioManager am;
+
+    private void Start()
+    {
+        am = AudioManager.instance;
+        am.Play("Title");
+    }
+
+
     public void ChangeScene(string scene)
     {
         SceneManager.LoadScene(scene);
