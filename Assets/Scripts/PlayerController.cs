@@ -35,12 +35,17 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     SpriteRenderer sr;
 
+    Transform currentCheckpointPos;
+    [SerializeField]
+    Transform initialPos;
+
     private void Start()
     {
        am = AudioManager.instance;
        rb = GetComponent<Rigidbody2D>(); 
        anim = GetComponentInChildren<Animator>();
        sr = anim.gameObject.GetComponent<SpriteRenderer>();
+       currentCheckpointPos = initialPos;
     }
 
     private void Update()
@@ -162,9 +167,27 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.layer == 3 && !alreadyHitGround)
         {
             anim.SetBool("gliding", false);
-            //am.FadeOutSound("PlayerGliding");
-            //am.Play("PlayerHitGround");
+            am.FadeOutSound("PlayerGliding");
+            am.Play("PlayerHitGround");
             alreadyHitGround = true;
         }
+    }
+
+    public void LoadCheckpoint()
+    {
+        am.FadeOutSound("PlayerGliding");
+        am.Stop("PlayerHitGround");
+        am.Stop("PlayerThrown");
+        am.Play("PlayerHurt");
+        gameObject.transform.position = currentCheckpointPos.position;
+        rb.velocity = Vector2.zero;
+        anim.SetTrigger("loadCheckpoint");
+    }
+
+    public void SaveCheckpoint(Transform savePos)
+    {
+        currentCheckpointPos = savePos;
+        rb.velocity = Vector2.zero;
+        anim.SetTrigger("checkpoint");
     }
 }
