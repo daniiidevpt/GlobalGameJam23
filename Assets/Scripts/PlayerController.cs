@@ -32,11 +32,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float forceIndicatorMultiplier;
 
     Rigidbody2D rb;
+    Animator anim;
+    SpriteRenderer sr;
 
     private void Start()
     {
        am = AudioManager.instance;
        rb = GetComponent<Rigidbody2D>(); 
+       anim = GetComponentInChildren<Animator>();
+       sr = anim.gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -71,6 +75,7 @@ public class PlayerController : MonoBehaviour
             arrowPointer.SetActive(false);
             forceIndicator.SetActive(false);
             am.Play("PlayerThrown", gameObject);
+            anim.SetBool("gliding", true);
 
             moveDirection = arrowPointer.transform.up;
             HandleMovement(moveDirection);
@@ -94,17 +99,26 @@ public class PlayerController : MonoBehaviour
             euler.z = Mathf.Clamp(euler.z, rotationMin, rotationMax);
             arrowPointer.transform.eulerAngles = euler;
 
+            if(euler.z > 0)
+            {
+                sr.flipX = false;
+            }
+            else
+            {
+                sr.flipX = true;
+            }
+
             //FORCE INDICATOR
             forceVFX.fillAmount = Mathf.PingPong(Time.time * forceIndicatorMultiplier, 1f);
 
             if (forceVFX.fillAmount < 0.2f)
-                moveForce = 1500;
+                moveForce = 8f;
             else if (forceVFX.fillAmount < 0.5f)
-                moveForce = 2500;
+                moveForce = 10f;
             else if (forceVFX.fillAmount < 0.8f)
-                moveForce = 3500;
+                moveForce = 15f;
             else if (forceVFX.fillAmount < 1f)
-                moveForce = 5000;
+                moveForce = 20f;
         }
     }
 
@@ -129,7 +143,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement(Vector2 direction)
     {
-        rb.AddForce(direction * moveForce * Time.deltaTime, ForceMode2D.Impulse);
+        rb.AddForce(direction * moveForce, ForceMode2D.Impulse);
     }
 
     private bool IsGrounded()
@@ -147,8 +161,9 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.layer == 3 && !alreadyHitGround)
         {
-            am.FadeOutSound("PlayerGliding");
-            am.Play("PlayerHitGround");
+            anim.SetBool("gliding", false);
+            //am.FadeOutSound("PlayerGliding");
+            //am.Play("PlayerHitGround");
             alreadyHitGround = true;
         }
     }
