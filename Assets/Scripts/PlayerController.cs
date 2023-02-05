@@ -167,7 +167,6 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.layer == 3 && !alreadyHitGround)
         {
             anim.SetBool("gliding", false);
-            am.FadeOutSound("PlayerGliding");
             am.Play("PlayerHitGround");
             alreadyHitGround = true;
         }
@@ -175,9 +174,9 @@ public class PlayerController : MonoBehaviour
 
     public void LoadCheckpoint()
     {
-        am.FadeOutSound("PlayerGliding");
-        am.Stop("PlayerHitGround");
-        am.Stop("PlayerThrown");
+        //am.FadeOutSound("PlayerGliding");
+        //am.Stop("PlayerHitGround");
+        //am.Stop("PlayerThrown");
         am.Play("PlayerHurt");
         gameObject.transform.position = currentCheckpointPos.position;
         rb.velocity = Vector2.zero;
@@ -189,5 +188,10 @@ public class PlayerController : MonoBehaviour
         currentCheckpointPos = savePos;
         rb.velocity = Vector2.zero;
         anim.SetTrigger("checkpoint");
+    }
+
+    public void PlayVictory()
+    {
+        anim.SetTrigger("victory");
     }
 }

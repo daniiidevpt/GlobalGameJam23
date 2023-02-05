@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -31,7 +32,18 @@ public class UIManager : MonoBehaviour
 
     public void GameOver()
     {
-        print("GAME OVER UI");
+        ChangeScene("MainMenu");
     }
 
+    public void ChangeScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
+
+    public IEnumerator VicotoryScene()
+    {
+        yield return new WaitForSeconds(5f);
+
+        GameOver();
+    }
 }
